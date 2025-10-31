@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PrepHub</title>
+  <link rel="stylesheet" href="prephub.css" />
+  
+</head>
+<body>
+
+<header class="container">
+  <h1>PrepHub</h1>
+  <div id="userSection" class="user-info" style="display:none;">
+    <span id="usernameDisplay"></span>
+    <button id="logoutBtn">Logout</button>
+  </div>
+</header>
+
+<!-- Authentication form -->
+<div id="authContainer" class="container" style="max-width: 400px; margin-top: 50px;">
+  <h2 id="authTitle">Welcome Back</h2>
+  <p id="authSubtitle">Sign in to access your study materials</p>
+  <form id="authForm">
+    <div id="usernameGroup" style="display:none;">
+      <label for="usernameInput">Username</label>
+      <input type="text" id="usernameInput" name="username" placeholder="Enter your username" />
+    </div>
+    <div>
+      <label for="emailInput">Email</label>
+      <input type="email" id="emailInput" name="email" required placeholder="Enter your email" />
+    </div>
+    <div>
+      <label for="passwordInput">Password</label>
+      <input type="password" id="passwordInput" name="password" required placeholder="Enter your password" />
+    </div>
+    <button type="submit" id="authSubmitBtn">Sign In</button>
+  </form>
+  <p style="margin-top: 12px;">
+    <span id="toggleAuthText">Don't have an account?</span>
+    <button id="toggleAuthBtn" style="background:none; border:none; color:#4338ca; cursor:pointer; font-weight:600; padding:0;">Sign Up</button>
+  </p>
+  <p id="authError" style="color:red; display:none;"></p>
+</div>
+
+<!-- Main app content -->
+<div id="appContent" class="container" style="display:none; margin-top:20px;">
+  <main>
+    <!-- Upload form -->
+    <section class="card">
+      <h3 class="card-title">Upload Material</h3>
+      <form id="uploadForm">
+        <div class="form-group">
+          <label for="uploadTitle">Title</label>
+          <input type="text" id="uploadTitle" name="title" placeholder="e.g. Calculus Notes" required />
+        </div>
+        <div class="form-group">
+          <label for="uploadSubject">Subject</label>
+          <input type="text" id="uploadSubject" name="subject" placeholder="e.g. Mathematics" required />
+        </div>
+        <div class="form-group">
+          <label for="uploadTopic">Topic</label>
+          <input type="text" id="uploadTopic" name="topic" placeholder="e.g. Derivatives" required />
+        </div>
+        <div class="form-group">
+          <label for="uploadExamRelevance">Exam Relevance</label>
+          <input type="text" id="uploadExamRelevance" name="examRelevance" placeholder="e.g. Final Exam 2024" required />
+        </div>
+        <div class="form-group">
+          <label for="uploadFile">File (pdf, doc, docx, txt, jpg, png)</label>
+          <input type="file" id="uploadFile" name="file" accept=".pdf,.doc,.docx,.txt,.jpg,.png" required />
+        </div>
+        <button type="submit">Upload Material</button>
+      </form>
+    </section>
+
+    <!-- Search and materials list -->
+    <section>
+      <input type="search" id="searchBar" placeholder="Search by subject, topic, or exam..." aria-label="Search materials" />
+      <h3 id="materialsTitle">All Materials (<span id="materialsCount">0</span>)</h3>
+      <div class="materials-list" id="materialsList">
+        <!-- Material cards will appear here -->
+      </div>
+      <p id="noMaterialsMessage" style="text-align:center; color:#6b7280; display:none; margin-top: 30px;">
+        No materials found. Upload your first study material!
+      </p>
+    </section>
+  </main>
+</div>
+
+<!-- Preview Modal -->
+<div id="previewModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="previewTitle">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 id="previewTitle" class="modal-title"></h4>
+      <button class="modal-close" aria-label="Close preview" id="previewClose">&times;</button>
+    </div>
+    <div class="modal-body" id="previewBody"></div>
+    <div class="modal-footer">
+      <button id="downloadBtn">Download File</button>
+    </div>
+  </div>
+</div>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='prephub.css') }}">
+<script src="{{ url_for('static', filename='prephub.js') }}"></script>
+
+</body>
+</html>
