@@ -1,6 +1,6 @@
 # prephub
 ✨ Key Features
-📤 Upload & Share: Easily upload your well-organized notes, study guides, and summaries for various subjects and exams.
+   Upload & Share: Easily upload your well-organized notes, study guides, and summaries for various subjects and exams.
 
 🔎 Search & Access: Quickly find relevant material using a powerful search function to access high-quality, peer-reviewed study resources.
 
